@@ -1,4 +1,3 @@
-package TCP;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.util.Scanner;
@@ -59,6 +58,7 @@ public class ClienteTCP {
 			////////////////ACA RECIBIREMOS EL MENSAJE DE BIENVENIDA DEL SERVIDOR//////////
 			Scanner mensajeb = new Scanner(sCliente.getInputStream());
 			String respuesta = mensajeb.nextLine();
+			System.out.println(respuesta);
 			if (respuesta.substring(0, 3).equals("220")) {
 				//System.out.println(respuesta);
 				System.out.println("CONEXION EXITOSA CON EL SERVIDOR DE CORREO SMTP: "+respuesta.substring(4,28));
@@ -71,11 +71,12 @@ public class ClienteTCP {
 			
 			lectura = new Scanner(System.in);
 			
+			boolean sw = true;
 			
-			while(true){
+			while(sw){
 				System.out.println("CORREO ORIGEN");
 				String u =  lectura.nextLine();
-				numero1.println("MAIL FROM:"+u+"@correo.telematica.edu.bo");
+				numero1.println("MAIL FROM:"+u);
 				
 				String ans = entrada.nextLine();
 				if (ans.substring(0, 3).equals("250")) {
@@ -83,19 +84,20 @@ public class ClienteTCP {
 					System.out.println("USUARIO CORRECTO");
 					System.out.println("CORREO DESTINO");
 					String d =  lectura.nextLine();
-					numero1.println("RCPT TO:"+d+"@correo.telematica.edu.bo");
+					numero1.println("RCPT TO:"+d);
 					System.out.println(entrada.nextLine());
 					numero1.println("data");
+					
 					System.out.println("Escribe tu mensaje");
 					System.out.println(entrada.nextLine());
 						
 					numero1.println(lectura.nextLine());
 					numero1.println(".");
 					System.out.println(entrada.nextLine());
+					sw = false;
 				}else{
 					System.out.println("ESE USUARIO NO EXISTE");
-				}
-							
+				}	
 			}
 			
 			

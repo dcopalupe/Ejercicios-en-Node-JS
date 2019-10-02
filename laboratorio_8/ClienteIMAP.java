@@ -1,4 +1,3 @@
-package TCP;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.util.Scanner;
@@ -33,36 +32,60 @@ public class ClienteIMAP {
 			
 			lectura = new Scanner(System.in);
 			
+			System.out.println("Ingresa tu usuario: ");
+			String user = lectura.nextLine();
+			System.out.println("Ingresa tu contraseña: ");
+			String pass = lectura.nextLine();
+			
+			
+			//String mensaje = lectura.nextLine();
+			salida.println(". login "+user+" "+pass);
+			System.out.println(entrada.nextLine());
+			
+			
 			while(true){
+			
+				System.out.println("MENU");
+				System.out.println("1.- select inbox");
+				System.out.println("2.- ver mensaje");
 				
 				
-				String mensaje = lectura.nextLine();
-				salida.println(mensaje);
-				System.out.println(entrada.nextLine());
+				int n = lectura.nextInt();
 				
+				switch (n) {
+				case 1:
+					
+					//String inbox = lectura.nextLine();
+					salida.println(". select inbox");
+					System.out.println(entrada.nextLine());
+					System.out.println(entrada.nextLine());
+					System.out.println(entrada.nextLine());
+					System.out.println(entrada.nextLine());
+					System.out.println(entrada.nextLine());
+					System.out.println(entrada.nextLine());
+					System.out.println(entrada.nextLine());
+					System.out.println(entrada.nextLine());
+					
+					break;
 				
-				String inbox = lectura.nextLine();
-				salida.println(inbox);
-				System.out.println(entrada.nextLine());
-				System.out.println(entrada.nextLine());
-				System.out.println(entrada.nextLine());
-				System.out.println(entrada.nextLine());
-				
-				String leerbuzon = lectura.nextLine();
-				salida.println(leerbuzon);
-				System.out.println(entrada.nextLine());
-				System.out.println(entrada.nextLine());
-				System.out.println(entrada.nextLine());
-				System.out.println(entrada.nextLine());
-				System.out.println(entrada.nextLine());
-				//. FETCH 2 rfc822.text
+				case 2:
+					System.out.println("Ingrese el numero de mensaje");
+					int num = lectura.nextInt();
+					
+					//String leerbuzon = lectura.nextLine();
+					salida.println(". fetch "+num+" rfc822.text");
+					System.out.println(entrada.nextLine());
+					System.out.println(entrada.nextLine());
+					//. FETCH 2 rfc822.text
+					
+					break;
+					
+				default:
+					System.out.println("Incorrecto");
+					break;
+				}
 				
 			}
-				
-			
-			
-			
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 			finalizar();
