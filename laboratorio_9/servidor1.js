@@ -1,20 +1,40 @@
 const http = require("http");
-const url = require("url")
-const moment = require("moment")
+const url = require("url");
 
-const server = http.createServer(function (req, res){
+const server = http.createServer(function (req, res) {
 
-    var dir = url.parse(req.url,true).query.iso;
-
-    console.log(dir);
-    console.log(moment.utc(dir));
+    const dir = url.parse(req.url, true);
     
+    console.log(dir.path);
+    console.log(dir.pathname);
+    console.log(dir.query);
 
-    res.writeHead(200, {"Content-Type": "text/html"});
-    res.write(`<h1>${dir}</h1>`);
-    res.end();
+    const { nom, ci} = dir.query;
+
+    if (dir.pathname == "/api/parseTime") {
+        res.writeHead(200, { "Content-Type": "text/plain" });
+        res.write(`Hola ${nom} tienes carnet nro ${ci}`);
+        res.end();
+    }else{
+        res.writeHead(200, { "Content-Type": "text/plain" });
+        res.write(`La ruta no es correcta`);
+        res.end();
+    }
 });
 
-server.listen(7777, function (){
-    console.log("Servidor iniciado");
+server.listen(9999, function () {
+    console.log("Servidor esta corriendo!!!!!!!");
 });
+
+/*
+Instalar paquetes
+
+github.com/dcopalupe
+
+npm install <nombre_paquete>
+npm i <nombre_paquete>
+
+IP 192.168.17.19
+
+http://192.168.17.19:8000/login/auth?nom=dan&ci=7086114
+*/

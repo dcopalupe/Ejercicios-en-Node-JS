@@ -12,12 +12,12 @@ var server = http.createServer(function(peticion, respuesta){
 	
 	console.log(dir.pathname);
 	console.log(dir.path);
-	//console.log(dir.query.iso);
+	console.log(dir.query.iso);
 
-	let time = dir.query.iso;
+	var time = dir.query.iso;
 
-	//let t = time.subString(11,13);
-	//console.log(t);
+	var t = time.subString(11,13);
+	console.log(t);
 	
 	var ans = new parseTime("8","3","12");
 	
