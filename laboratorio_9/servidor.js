@@ -1,5 +1,6 @@
 var http = require('http');
 var url = require('url');
+const moment = require('moment');
 
 function parseTime(h, m, s) { 
 	this.hora = h;
@@ -10,13 +11,13 @@ var server = http.createServer(function(peticion, respuesta){
     
     var dir = url.parse(peticion.url,true);
 	
-	console.log(dir.pathname);
-	console.log(dir.path);
-	console.log(dir.query.iso);
+	//console.log(dir.pathname);
+	//console.log(dir.path);
+	//console.log(dir.query.iso);
 
-	var time = dir.query.iso;
+	const time = dir.query.iso;
 
-	var t = time.subString(11,13);
+	var t = time;
 	console.log(t);
 	
 	var ans = new parseTime("8","3","12");
