@@ -13,6 +13,6 @@ server.on("connection",function(socket){
 });
 
 server.listen(puerto,function(){
-    console.log("----Servidor conectado----");
+    console.log("----Servidor conectado en el puerto "+puerto+"----");
     console.log("--Esperando clientes--");
 });
